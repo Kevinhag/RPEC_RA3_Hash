@@ -231,7 +231,7 @@ class MapaHash {
 
     // multiplicação
     private int hashMultiplicacao(int chave) {
-        double A = 0.6180339887; // Parte fracionária da razão áurea
+        double A = 0.6180339887; // parte fracionária da razão áurea
         double resultado = chave * A;
         resultado = resultado - Math.floor(resultado);
         return (int) (tamanho * resultado);
@@ -240,9 +240,15 @@ class MapaHash {
     // dobramento
     private int hashDobra(int chave) {
         String chaveStr = String.valueOf(chave);
+        int chaveStrTamanho = 0;
+
+        for (int c : chaveStr.toCharArray()) { // não pode usar .length
+            chaveStrTamanho++;
+        };
+
         int soma = 0;
-        for (int i = 0; i < chaveStr.length(); i += 3) {
-            String parte = chaveStr.substring(i, Math.min(i + 3, chaveStr.length()));
+        for (int i = 0; i < chaveStrTamanho; i += 3) {
+            String parte = chaveStr.substring(i, Math.min(i + 3, chaveStrTamanho));
             soma += Integer.parseInt(parte);
         }
         return soma % tamanho;

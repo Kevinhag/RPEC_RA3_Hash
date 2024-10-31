@@ -108,7 +108,7 @@ for p in plt.gca().patches:
     if height > 0:
         plt.annotate(f'{int(height)}',
                         (p.get_x() + p.get_width() / 2., height),
-                        ha='center', va='bottom', fontsize=8, color='black',
+                        ha='center', va='bottom', fontsize=10, color='black',
                         xytext=(0, 5), textcoords='offset points')
 
 plt.tight_layout()
