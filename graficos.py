@@ -60,7 +60,10 @@ sns.barplot(
     x="TamanhoConjunto",
     y="TempoInsercao",
     hue="FuncaoHash",
-    palette='muted'
+    palette='muted',
+    ci=95, 
+    capsize=.4,
+    errwidth=1
 )
 
 plt.title("Média do Tempo de Inserção", fontsize=16)
@@ -78,8 +81,7 @@ for p in plt.gca().patches:
         plt.annotate(f'{int(height)}',
                         (p.get_x() + p.get_width() / 2., height),
                         ha='center', va='bottom', fontsize=8, color='black',
-                        xytext=(0, 5), textcoords='offset points')
-
+                        xytext=(0, 5), textcoords='offset points', bbox=dict(facecolor='white', alpha=1, edgecolor='none'))
 plt.tight_layout()
 plt.show()
 
@@ -91,7 +93,10 @@ sns.barplot(
     x="TamanhoConjunto",
     y="ColisoesInsercao",
     hue="FuncaoHash",
-    palette='muted'
+    palette='muted',
+    ci=95,
+    capsize=.4,
+    errwidth=1
 )
 
 plt.title("Média do Número de Colisões na Inserção", fontsize=16)
@@ -108,8 +113,8 @@ for p in plt.gca().patches:
     if height > 0:
         plt.annotate(f'{int(height)}',
                         (p.get_x() + p.get_width() / 2., height),
-                        ha='center', va='bottom', fontsize=10, color='black',
-                        xytext=(0, 5), textcoords='offset points')
+                        ha='center', va='bottom', fontsize=8, color='black',
+                        xytext=(0, 5), textcoords='offset points', bbox=dict(facecolor='white', alpha=1, edgecolor='none'))
 
 plt.tight_layout()
 plt.show()
@@ -122,7 +127,10 @@ sns.barplot(
     x="TamanhoConjunto",
     y="TempoBusca",
     hue="FuncaoHash",
-    palette='muted'
+    palette='muted',
+    ci=95,
+    capsize=.4,
+    errwidth=1
 )
 
 plt.title("Média do Tempo de Busca", fontsize=16)
@@ -137,10 +145,10 @@ plt.gca().yaxis.set_major_formatter(formatter)
 for p in plt.gca().patches:
     height = p.get_height()
     if height > 0:
-        plt.annotate(f'{int(height)}',
+        plt.annotate(f'{height:.2f}',
                         (p.get_x() + p.get_width() / 2., height),
                         ha='center', va='bottom', fontsize=8, color='black',
-                        xytext=(0, 5), textcoords='offset points')
+                        xytext=(0, 5), textcoords='offset points', bbox=dict(facecolor='white', alpha=1, edgecolor='none'))
 
 plt.tight_layout()
 plt.show()
@@ -153,7 +161,10 @@ sns.barplot(
     x="TamanhoConjunto",
     y="ComparacoesBusca",
     hue="FuncaoHash",
-    palette='muted'
+    palette='muted',
+    ci=95,
+    capsize=.4,
+    errwidth=1
 )
 
 plt.title("Média do Número de Comparações na Busca", fontsize=16)
@@ -171,7 +182,7 @@ for p in plt.gca().patches:
         plt.annotate(f'{int(height)}',
                         (p.get_x() + p.get_width() / 2., height),
                         ha='center', va='bottom', fontsize=8, color='black',
-                        xytext=(0, 5), textcoords='offset points')
+                        xytext=(0, 5), textcoords='offset points', bbox=dict(facecolor='white', alpha=1, edgecolor='none'))
 
 plt.tight_layout()
 plt.show()
