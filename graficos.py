@@ -52,7 +52,7 @@ sns.set_theme(style="whitegrid")
 
 formatter = FuncFormatter(formatadorInt)
 
-# ========================== MÉDIA DO TEMPO DE INSERÇÃO ==========================
+# ========================== MÉDIA DO TEMPO DE INSERÇÃO POR CONJUNTO ==========================
 
 plt.figure(figsize=(12, 8))
 sns.barplot(
@@ -85,7 +85,40 @@ for p in plt.gca().patches:
 plt.tight_layout()
 plt.show()
 
-# ========================== MÉDIA DO NÚMERO DE COLISÕES ==========================
+# ========================== MÉDIA DO TEMPO DE INSERÇÃO POR TABELA ==========================
+
+plt.figure(figsize=(12, 8))
+sns.barplot(
+    data=csv_media,
+    x="TamanhoTabela",
+    y="TempoInsercao",
+    hue="FuncaoHash",
+    palette='muted',
+    ci=95, 
+    capsize=.4,
+    errwidth=1
+)
+
+plt.title("Média do Tempo de Inserção", fontsize=16)
+plt.xlabel("Tamanho da Tabela", fontsize=14)
+plt.ylabel("Média Tempo de Inserção (ms)", fontsize=14)
+plt.xticks(rotation=45)
+plt.legend(title='Função Hash')
+plt.yscale('log')
+plt.gca().yaxis.set_major_formatter(formatter)
+
+# Anotações nas barras
+for p in plt.gca().patches:
+    height = p.get_height()
+    if height > 0:
+        plt.annotate(f'{int(height)}',
+                        (p.get_x() + p.get_width() / 2., height),
+                        ha='center', va='bottom', fontsize=8, color='black',
+                        xytext=(0, 5), textcoords='offset points', bbox=dict(facecolor='white', alpha=1, edgecolor='none'))
+plt.tight_layout()
+plt.show()
+
+# ========================== MÉDIA DO NÚMERO DE COLISÕES POR CONJUNTO ==========================
 
 plt.figure(figsize=(12, 8))
 sns.barplot(
@@ -119,7 +152,41 @@ for p in plt.gca().patches:
 plt.tight_layout()
 plt.show()
 
-# ========================== MÉDIA DO TEMPO DE BUSCA ==========================
+# ========================== MÉDIA DO NÚMERO DE COLISÕES POR TABELA ==========================
+
+plt.figure(figsize=(12, 8))
+sns.barplot(
+    data=csv_media,
+    x="TamanhoTabela",
+    y="ColisoesInsercao",
+    hue="FuncaoHash",
+    palette='muted',
+    ci=95,
+    capsize=.4,
+    errwidth=1
+)
+
+plt.title("Média do Número de Colisões na Inserção", fontsize=16)
+plt.xlabel("Tamanho da Tabela", fontsize=14)
+plt.ylabel("Média de Colisões na Inserção", fontsize=14)
+plt.xticks(rotation=45)
+plt.legend(title='Função Hash')
+plt.yscale('log')
+plt.gca().yaxis.set_major_formatter(formatter)
+
+# Anotações nas barras
+for p in plt.gca().patches:
+    height = p.get_height()
+    if height > 0:
+        plt.annotate(f'{int(height)}',
+                        (p.get_x() + p.get_width() / 2., height),
+                        ha='center', va='bottom', fontsize=8, color='black',
+                        xytext=(0, 5), textcoords='offset points', bbox=dict(facecolor='white', alpha=1, edgecolor='none'))
+
+plt.tight_layout()
+plt.show()
+
+# ========================== MÉDIA DO TEMPO DE BUSCA POR CONJUNTO ==========================
 
 plt.figure(figsize=(12, 8))
 sns.barplot(
@@ -153,7 +220,41 @@ for p in plt.gca().patches:
 plt.tight_layout()
 plt.show()
 
-# ========================== MÉDIA DO NÚMERO DE COMPARAÇÕES NA BUSCA ==========================
+# ========================== MÉDIA DO TEMPO DE BUSCA POR TABELA ==========================
+
+plt.figure(figsize=(12, 8))
+sns.barplot(
+    data=csv_media,
+    x="TamanhoTabela",
+    y="TempoBusca",
+    hue="FuncaoHash",
+    palette='muted',
+    ci=95,
+    capsize=.4,
+    errwidth=1
+)
+
+plt.title("Média do Tempo de Busca", fontsize=16)
+plt.xlabel("Tamanho da Tabela", fontsize=14)
+plt.ylabel("Média Tempo de Busca (ms)", fontsize=14)
+plt.xticks(rotation=45)
+plt.legend(title='Função Hash')
+plt.yscale('log')
+plt.gca().yaxis.set_major_formatter(formatter)
+
+# Anotações nas barras
+for p in plt.gca().patches:
+    height = p.get_height()
+    if height > 0:
+        plt.annotate(f'{height:.2f}',
+                        (p.get_x() + p.get_width() / 2., height),
+                        ha='center', va='bottom', fontsize=8, color='black',
+                        xytext=(0, 5), textcoords='offset points', bbox=dict(facecolor='white', alpha=1, edgecolor='none'))
+
+plt.tight_layout()
+plt.show()
+
+# ========================== MÉDIA DO NÚMERO DE COMPARAÇÕES NA BUSCA POR CONJUNTO ==========================
 
 plt.figure(figsize=(12, 8))
 sns.barplot(
@@ -169,6 +270,39 @@ sns.barplot(
 
 plt.title("Média do Número de Comparações na Busca", fontsize=16)
 plt.xlabel("Tamanho do Conjunto", fontsize=14)
+plt.ylabel("Média de Comparações na Busca", fontsize=14)
+plt.xticks(rotation=45)
+plt.legend(title='Função Hash')
+plt.yscale('log')
+plt.gca().yaxis.set_major_formatter(formatter)
+
+# Anotações nas barras
+for p in plt.gca().patches:
+    height = p.get_height()
+    if height > 0:
+        plt.annotate(f'{int(height)}',
+                        (p.get_x() + p.get_width() / 2., height),
+                        ha='center', va='bottom', fontsize=8, color='black',
+                        xytext=(0, 5), textcoords='offset points', bbox=dict(facecolor='white', alpha=1, edgecolor='none'))
+
+plt.tight_layout()
+plt.show()
+# ========================== MÉDIA DO NÚMERO DE COMPARAÇÕES NA BUSCA POR TABELA ==========================
+
+plt.figure(figsize=(12, 8))
+sns.barplot(
+    data=csv_media,
+    x="TamanhoTabela",
+    y="ComparacoesBusca",
+    hue="FuncaoHash",
+    palette='muted',
+    ci=95,
+    capsize=.4,
+    errwidth=1
+)
+
+plt.title("Média do Número de Comparações na Busca", fontsize=16)
+plt.xlabel("Tamanho da Tabela", fontsize=14)
 plt.ylabel("Média de Comparações na Busca", fontsize=14)
 plt.xticks(rotation=45)
 plt.legend(title='Função Hash')
